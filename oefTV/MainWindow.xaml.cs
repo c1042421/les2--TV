@@ -59,18 +59,12 @@ namespace oefTV
         {
             TextBox tb = (TextBox)sender;
             bool samsungChecked = rdbSamsung.IsChecked ?? false;
-            bool sonyChecked = rdbSony.IsChecked ?? false;
             int kanaal;
 
             if (int.TryParse(txtKanaal.Text, out kanaal))
             {
-                if (samsungChecked)
-                {
-                    samsung.Kanaal = kanaal;
-                } else if (sonyChecked)
-                {
-                    sony.Kanaal = kanaal;
-                }
+                TV tv = samsungChecked ? samsung : sony;
+                tv.Kanaal = kanaal;
             }
         }
 
@@ -78,19 +72,12 @@ namespace oefTV
         {
             TextBox tb = (TextBox)sender;
             bool samsungChecked = rdbSamsung.IsChecked ?? false;
-            bool sonyChecked = rdbSony.IsChecked ?? false;
             int volume;
 
             if (int.TryParse(txtVolume.Text, out volume))
             {
-                if (samsungChecked)
-                {
-                    samsung.Volume = volume;
-                }
-                else if (sonyChecked)
-                {
-                    sony.Volume = volume;
-                }
+                TV tv = samsungChecked ? samsung : sony;
+                tv.Volume = volume;
             }
         }
 
@@ -98,17 +85,10 @@ namespace oefTV
         {
             CheckBox cb = (CheckBox)sender;
             bool samsungChecked = rdbSamsung.IsChecked ?? false;
-            bool sonyChecked = rdbSony.IsChecked ?? false;
             bool cbChecked = cb.IsChecked ?? false;
 
-            if (samsungChecked)
-            {
-                samsung.Power = cbChecked;
-            }
-            else if (sonyChecked)
-            {
-                sony.Power = cbChecked;
-            }
+            TV tv = samsungChecked ? samsung : sony;
+            tv.Power = cbChecked;
         }
     }
 }

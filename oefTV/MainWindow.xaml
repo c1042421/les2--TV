@@ -8,72 +8,38 @@
         Title="MainWindow" Height="350" Width="525"
         Loaded="Window_Loaded">
     <Grid>
-
         <Grid.RowDefinitions>
-
             <RowDefinition></RowDefinition>
-
             <RowDefinition></RowDefinition>
-
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
-
             <ColumnDefinition></ColumnDefinition>
-
             <ColumnDefinition></ColumnDefinition>
-
         </Grid.ColumnDefinitions>
-
         <StackPanel Grid.RowSpan="2">
-
             <GroupBox Header="TV" Height="50">
-
                 <Grid Margin="5">
-
                     <Grid.ColumnDefinitions>
-
                         <ColumnDefinition></ColumnDefinition>
-
                         <ColumnDefinition></ColumnDefinition>
-
                     </Grid.ColumnDefinitions>
-
                     <RadioButton GroupName="tv" Name = "rdbSony" Checked="RdbSony_Checked">Sony</RadioButton>
-
                     <RadioButton GroupName="tv" Name = "rdbSamsung" Grid.Column="1" Checked="RdbSamsung_Checked">Samsung</RadioButton>
-
                 </Grid>
-
             </GroupBox>
-
             <Image Name="imgTV" Height="270" Width="auto"></Image>
-
         </StackPanel>
-
         <Label Grid.Column="1" Name="lblInfo"></Label>
-
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
-
             <CheckBox Name="cbPower" Margin="5" Checked="CbPower_Checked">Power</CheckBox>
-
             <StackPanel Orientation="Horizontal">
-
                 <Label Margin="2" Width="70">Kanaal:</Label>
-
                 <TextBox Name="txtKanaal" Margin="2" Width="140" TextChanged="txtKanaal_TextChanged"></TextBox>
-
             </StackPanel>
-
             <StackPanel Orientation="Horizontal">
-
                 <Label Margin="2" Width="70">Volume:</Label>
-
                 <TextBox Name="txtVolume" Width="140" Margin="2" TextChanged="txtVolume_TextChanged"></TextBox>
-
             </StackPanel>
-
         </StackPanel>
-
     </Grid>
 </Window>

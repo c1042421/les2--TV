@@ -51,7 +51,47 @@ namespace oefTV
 
         private BitmapImage MakeBitMapImageFor(string url)
         {
-            return new BitmapImage(new Uri(@"images\" + url, UriKind.Relative));
+            Uri uri = new Uri(@"images\" + url, UriKind.Relative);
+            return new BitmapImage(uri);
+        }
+
+        private void txtKanaal_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            bool samsungChecked = rdbSamsung.IsChecked ?? false;
+            bool sonyChecked = rdbSony.IsChecked ?? false;
+            int kanaal;
+
+            if (int.TryParse(txtKanaal.Text, out kanaal))
+            {
+                if (samsungChecked)
+                {
+                    samsung.Kanaal = kanaal;
+                } else if (sonyChecked)
+                {
+                    sony.Kanaal = kanaal;
+                }
+            }
+        }
+
+        private void txtVolume_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            bool samsungChecked = rdbSamsung.IsChecked ?? false;
+            bool sonyChecked = rdbSony.IsChecked ?? false;
+            int volume;
+
+            if (int.TryParse(txtVolume.Text, out volume))
+            {
+                if (samsungChecked)
+                {
+                    samsung.Volume = volume;
+                }
+                else if (sonyChecked)
+                {
+                    sony.Volume = volume;
+                }
+            }
         }
 
         private void CbPower_Checked(object sender, RoutedEventArgs e)

@@ -47,7 +47,7 @@
 
             </GroupBox>
 
-            <Image Name="imgTV" Height="auto"></Image>
+            <Image Name="imgTV" Height="270" Width="auto"></Image>
 
         </StackPanel>
 
@@ -61,7 +61,7 @@
 
                 <Label Margin="2" Width="70">Kanaal:</Label>
 
-                <TextBox Name="txtKanaal" Margin="2" Width="140"></TextBox>
+                <TextBox Name="txtKanaal" Margin="2" Width="140" TextChanged="txtKanaal_TextChanged"></TextBox>
 
             </StackPanel>
 
@@ -69,7 +69,7 @@
 
                 <Label Margin="2" Width="70">Volume:</Label>
 
-                <TextBox Name="txtVolume" Width="140" Margin="2"></TextBox>
+                <TextBox Name="txtVolume" Width="140" Margin="2" TextChanged="txtVolume_TextChanged"></TextBox>
 
             </StackPanel>
 

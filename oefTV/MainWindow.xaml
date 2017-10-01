@@ -48,7 +48,7 @@
         <Image Name="imgTV" Grid.Row="1" Grid.Column="0"></Image>
         
         <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Top">
-            <CheckBox Name="cbPower" Margin="5" Checked="CbPower_Checked">Power</CheckBox>
+            <CheckBox Name="cbPower" Margin="5" Click="cbPower_Click">Power</CheckBox>
             <Label Grid.Column="1" Name="lblInfo" Height="125"></Label>
         </StackPanel>
     </Grid>

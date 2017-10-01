@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace oefTV
-
 {
     public partial class MainWindow : Window
     {
@@ -114,20 +113,21 @@ namespace oefTV
             UpdateViewWith(koker);
         }
 
-        private void CbPower_Checked(object sender, RoutedEventArgs e)
+        private void cbPower_Click(object sender, RoutedEventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
             bool cbChecked = cb.IsChecked ?? false;
             ElektronischToestel toestel;
 
-            if (tbiTV.IsFocused)
+            if (tbiTV.IsSelected)
             {
                 bool samsungChecked = rdbSamsung.IsChecked ?? false;
 
                 toestel = samsungChecked ? samsung : sony;
-            } else
+            }
+            else
             {
-              toestel = (Warmwaterkoker)cbWaterKokers.SelectedItem;
+                toestel = (Warmwaterkoker)cbWaterKokers.SelectedItem;
             }
 
             toestel.Power = cbChecked;

@@ -16,8 +16,8 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TabControl Grid.ColumnSpan="2">
-            <TabItem Header="TV">
+        <TabControl Name="tbcToestel" Grid.ColumnSpan="2">
+            <TabItem Name="tbiTV" Header="TV" IsSelected="True">
                 <StackPanel>
                     <GroupBox Header="TV" Height="50">
                         <Grid Margin="5">
@@ -40,8 +40,8 @@
                 </StackPanel>
             </TabItem>
             
-            <TabItem Header="Waterkoker">
-                <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Name="cbWaterKokers" Width="260" Height="25"></ComboBox>
+            <TabItem Name="tbiWaterKoker" Header="Waterkoker">
+                <ComboBox VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" Name="cbWaterKokers" Width="260" Height="25" SelectionChanged="cbWaterKokers_SelectionChanged"></ComboBox>
             </TabItem>
         </TabControl>
         

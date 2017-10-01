@@ -19,6 +19,7 @@ namespace oefTV
     public partial class MainWindow : Window
     {
         TV sony, samsung;
+        List<Warmwaterkoker> waterkokers;
 
         public MainWindow()
         {
@@ -27,8 +28,27 @@ namespace oefTV
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            MakeTVSAndSetChecked();
+            MakeWaterKokersAndSetList();
+        }
+
+        private void MakeTVSAndSetChecked()
+        {
             sony = new TV("Sony", "KDL-40RD450", 50, 40, "sony.png");
             samsung = new TV("Samsung", "UE55KS7000", 100, 55, "samsung.png");
+
+            rdbSony.IsChecked = true;
+        }
+
+        private void MakeWaterKokersAndSetList()
+        {
+            waterkokers = new List<Warmwaterkoker>();
+
+            waterkokers.Add(new Warmwaterkoker("PHILIPS", "HD4646/70", "images/philips1.jpg", (decimal)1.5));
+            waterkokers.Add(new Warmwaterkoker("EMERIO", "WK-110874", "images/waterkoker2.png", (decimal)1.7));
+
+            cbWaterKokers.DisplayMemberPath = "Type";
+            cbWaterKokers.ItemsSource = waterkokers;
         }
 
         private void RdbSony_Checked(object sender, RoutedEventArgs e)
@@ -40,13 +60,19 @@ namespace oefTV
         {
             UpdateViewWith(samsung);
         }
-        private void UpdateViewWith(TV tv)
+
+        private void UpdateViewWith(ElektronischToestel et)
         {
-            lblInfo.Content = tv.ToString();
-            txtKanaal.Text = tv.Kanaal.ToString();
-            txtVolume.Text = tv.Volume.ToString();
-            imgTV.Source = MakeBitMapImageFor(tv.Afbeelding);
-            cbPower.IsChecked = tv.Power;
+            lblInfo.Content = et.ToString();
+            imgTV.Source = MakeBitMapImageFor(et.Afbeelding);
+            cbPower.IsChecked = et.Power;
+
+            if (et is TV)
+            {
+                TV tv = (TV)et;
+                txtKanaal.Text = tv.Kanaal.ToString();
+                txtVolume.Text = tv.Volume.ToString();
+            }
         }
 
         private BitmapImage MakeBitMapImageFor(string url)
@@ -81,14 +107,30 @@ namespace oefTV
             }
         }
 
+        private void cbWaterKokers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            Warmwaterkoker koker = (Warmwaterkoker)cb.SelectedItem;
+            UpdateViewWith(koker);
+        }
+
         private void CbPower_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
-            bool samsungChecked = rdbSamsung.IsChecked ?? false;
             bool cbChecked = cb.IsChecked ?? false;
+            ElektronischToestel toestel;
 
-            TV tv = samsungChecked ? samsung : sony;
-            tv.Power = cbChecked;
+            if (tbiTV.IsFocused)
+            {
+                bool samsungChecked = rdbSamsung.IsChecked ?? false;
+
+                toestel = samsungChecked ? samsung : sony;
+            } else
+            {
+              toestel = (Warmwaterkoker)cbWaterKokers.SelectedItem;
+            }
+
+            toestel.Power = cbChecked;
         }
     }
 }

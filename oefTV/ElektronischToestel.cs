@@ -28,7 +28,7 @@ namespace oefTV
 
         public override string ToString()
         {
-            return string.Format("Merk: {0}\nType: {1}\nPower: {3}", Merk, Type, Power);
+            return string.Format("Merk: {0}\nType: {1}\nPower: {2}", Merk, Type, Power);
         }
 
     }
